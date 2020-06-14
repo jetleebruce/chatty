@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../../Components/Header";
 import firebase from "../../Services/firebase";
 import LoginString from "../Login/LoginStrings";
-import { Link } from "react-router-dom";
 
 export default class SignUp extends React.Component {
   constructor() {
@@ -40,6 +39,7 @@ export default class SignUp extends React.Component {
               email,
               password,
               URL: "",
+              description: "",
               messages: [{ notificationId: "", number: 0 }],
             })
             .then((docRef) => {
