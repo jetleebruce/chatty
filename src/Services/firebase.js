@@ -1,5 +1,5 @@
-import React from 'react'
-import * as firebase from 'firebase'
+import React from "react";
+import * as firebase from "firebase";
 
 var firebaseConfig = {
   apiKey: "AIzaSyBq5tEW7yNLTm6x6gFcQZYY88jOkXbsJYc",
@@ -13,5 +13,5 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-  
-export default firebase
+
+export default firebase;
