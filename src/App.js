@@ -1,28 +1,26 @@
-import React, {Component} from 'react';
-import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
+import React, { Component } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-import Home from './Pages/Home/Home'
-import Signup from './Pages/Signup/Signup'
-import Login from './Pages/Login/Login'
-import Chat from './Pages/Chat/Chat'
-import { toast, ToastContainer } from 'react-toastify'
+import Home from "./Pages/Home/Home";
+import Signup from "./Pages/Signup/Signup";
+import Login from "./Pages/Login/Login";
+import Chat from "./Pages/Chat/Chat";
+import Profile from "./Pages/Profile/Profile";
+import { toast, ToastContainer } from "react-toastify";
 
 class App extends Component {
-
-
   showToast = (type, message) => {
     switch (type) {
       case 0:
-        toast.warning(message)
+        toast.warning(message);
         break;
       case 1:
-        toast.success(message)
+        toast.success(message);
         break;
       default:
         break;
     }
-  }
- 
+  };
 
   render() {
     return (
@@ -30,7 +28,7 @@ class App extends Component {
         <ToastContainer
           autoClose={2000}
           hideProgressBar={true}
-          position={toast.POSITION.BOTTOM_CENTER}
+          position={toast.POSITION.TOP_CENTER}
         />
         <Switch>
           <Route exact path='/' render={(props) => <Home {...props} />} />
@@ -46,10 +44,16 @@ class App extends Component {
             path='/chat'
             render={(props) => <Chat showToast={this.showToast} {...props} />}
           />
+          <Route
+            path='/profile'
+            render={(props) => (
+              <Profile showToast={this.showToast} {...props} />
+            )}
+          />
         </Switch>
       </Router>
     );
   }
 }
 
-export default App
+export default App;
