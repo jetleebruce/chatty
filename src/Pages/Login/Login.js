@@ -10,7 +10,6 @@ export default class Login extends React.Component {
     super(props);
     this.state = {
       isLoading: true,
-      error: "",
       email: "",
       password: "",
     };
@@ -123,7 +122,9 @@ export default class Login extends React.Component {
                   Login
                 </button>
               </div>
-              <p id='1'></p>
+              <div className='error'>
+                <p id='1' style={{ color: "red" }}></p>
+              </div>
             </form>
           </div>
         </div>
