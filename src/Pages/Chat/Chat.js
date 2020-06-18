@@ -232,7 +232,7 @@ export default class Chat extends React.Component {
               />
 
               <div className='viewWrapContentItem'>
-                <span className='textItem'>{`Name: ${item.name}`}</span>
+                <span className='textItem'>{`${item.name}`}</span>
               </div>
               {classname === "viewWrapItemNotification" ? (
                 <div className='notificationpragraph'>
