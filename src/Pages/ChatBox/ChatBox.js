@@ -24,6 +24,22 @@ export default class ChatBox extends React.Component {
     );
     this.stateChange = localStorage.getItem(LoginString.UPLOAD_CHANGED);
     this.currentPeerUser = this.props.currentPeerUser;
+    this.groupChatId = null;
+    this.currentPeerUserMessages = [];
+    this.removeListener = null;
+    this.currentPhotoFile = null;
+
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(this.currentPeerUser.documentkey)
+      .get()
+      .then((docRef) => {
+        this.currentPeerUserMessages = docRef.data().messages;
+      });
+  }
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
   componentWillReceiveProps(newProps) {
     if (newProps.currentPeerUser) {
@@ -34,6 +50,64 @@ export default class ChatBox extends React.Component {
   componentDidMount() {
     //this.getListHistory()
   }
+  onSendMessage = (content, type) => {
+    let notificationMessages = [];
+
+    if (this.state.isShowSticker && type === 2) {
+      this.setState({ isShowSticker: false });
+    }
+    if (content.trim() === "") {
+      return;
+    }
+    const timestamp = moment().valueOf().toString();
+    const itemMessage = {
+      idForm: this.currentUserId,
+      idTo: this.currentPeerUser.id,
+      timestamp: timestamp,
+      content: content.trim(),
+      type: type,
+    };
+    firebase
+      .firestore()
+      .collection("Messages")
+      .doc(this.groupChatId)
+      .collection(this.groupChatId)
+      .doc(timestamp)
+      .set(itemMessage)
+      .then(() => {
+        this.setState({ inputValue: "" });
+      });
+    this.currentPeerUserMessages.map((item) => {
+      if (item.notificationId !== this.currentUserId) {
+        notificationMessages.push({
+          notificationId: item.notificationId,
+          number: item.number,
+        });
+      }
+    });
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(this.currentPeerUser.documentkey)
+      .update({ messgaes: notificationMessages })
+      .then((data) => {})
+      .catch((err) => {
+        this.props.showToast(0, err.toString());
+      });
+  };
+  scrollToBottom = () => {
+    if (this.messagesEnd) {
+      this.messagesEnd.scrollIntoView({});
+    }
+  };
+  onKeyPress = (event) => {
+    if (event.key === "Enter") {
+      this.onSendMessage(this.state.inputValue, 0);
+    }
+  };
+    openListSticker = () => {
+      this.setState({isShowSticker: !this.state.isShowSticker})
+  };
   render() {
     return (
       <div className='viewChatBoard'>
@@ -76,7 +150,6 @@ export default class ChatBox extends React.Component {
             accept='images/*'
             type='file'
             onChange={this.onChoosePhoto}
-            alt="image"
           />
           <img
             className='icOpenSticker'
