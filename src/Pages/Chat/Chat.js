@@ -2,7 +2,6 @@ import React from "react";
 import LoginString from "../Login/LoginStrings";
 import firebase from "../../Services/firebase";
 import "./Chat.css";
-import ReactLoading from "react-loading";
 import images from "../../ProjectImages/ProjectImages";
 import ChatBox from "../ChatBox/ChatBox";
 import WelcomeBoard from "../Welcome/Welcome";
@@ -257,9 +256,9 @@ export default class Chat extends React.Component {
       <div className='flex flex-col text-center items-center'>
         <div
           className='flex flex-row'
-          style={{ padding: `40px 18px`, width: `1380px` }}
+          style={{ padding: `40px 18px`, width: `100%`, height: `100vh` }}
         >
-          <div className='overflow-y-scroll max-h-screen min-h-screen w-3/12 relative'>
+          <div className='overflow-y-scroll w-3/12 relative'>
             <div
               className='flex justify-between w-full p-4 '
               style={{ backgroundColor: `#ededed` }}
@@ -296,7 +295,7 @@ export default class Chat extends React.Component {
             </div>
             {this.state.displayedContacts}
           </div>
-          <div className='viewBoard'>
+          <div className='flex flex-1' style={{ maxHeight: `90vh` }}>
             {this.state.currentPeerUser ? (
               <ChatBox
                 currentPeerUser={this.state.currentPeerUser}

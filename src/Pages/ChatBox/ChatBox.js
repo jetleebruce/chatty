@@ -153,17 +153,39 @@ export default class ChatBox extends React.Component {
   };
   render() {
     return (
-      <div className='viewChatBoard'>
-        <div className='headerChatBoard'>
+      <div
+        className='flex flex-1 flex-col relative rounded-lg'
+        style={{
+          backgroundImage: `url(
+            "https://i.pinimg.com/474x/2e/2e/25/2e2e25c53d858f4af66151304fdb68b7.jpg"
+          )`,
+          maxHeight: `90vh`,
+          minHeight: `90vh`,
+          backfaceVisibility: `hidden`,
+          borderLeft: `1px solid #ededed`,
+        }}
+      >
+        <div
+          className='flex p-3'
+          style={{
+            borderBottom: `1px solid #e8e8e8`,
+            backgroundColor: `#ededed`,
+            height: `5rem`
+          }}
+        >
           <img
-            className='viewAvatarItem'
+            className='ml-4 w-12 h-12 rounded-full object-cover'
             src={this.currentPeerUser.URL}
             alt=''
+            style={{ backgroundImage: `url('../../images/nopic.jpg')` }}
           />
-          <span className='textHeaderChatBoard'>
-            <p style={{ fontSize: "20px" }}> {this.currentPeerUser.name}</p>
+          <span
+            className='font-bold ml-8'
+            style={{ fontSize: `20px`, color: `#203152` }}
+          >
+            <p> {this.currentPeerUser.name}</p>
           </span>
-          <div className='aboutme'>
+          <div className='pt-8 mb-4 ml-24 flex align-center absolute'>
             <span>
               <p>{this.currentPeerUser.description}</p>
             </span>
@@ -439,7 +461,7 @@ export default class ChatBox extends React.Component {
           alt='sticker'
           onClick={() => this.onSendMessage("mimi5", 2)}
         />
-        
+
         <img
           className='imgSticker'
           src={images.rock}
