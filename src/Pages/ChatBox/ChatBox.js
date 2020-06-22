@@ -119,7 +119,7 @@ export default class ChatBox extends React.Component {
         this.setState({ inputValue: "" });
       });
     this.currentPeerUserMessages.map((item) => {
-      if (item.notificationId != this.currentUserId) {
+      if (item.notificationId !== this.currentUserId) {
         notificationMessages.push({
           notificationId: item.notificationId,
           number: item.number,
@@ -416,45 +416,6 @@ export default class ChatBox extends React.Component {
       <div className='viewStickers'>
         <img
           className='imgSticker'
-          src={images.lego1}
-          alt='sticker'
-          onClick={() => {
-            this.onSendMessage("lego1", 2);
-          }}
-        />
-        <img
-          className='imgSticker'
-          src={images.lego2}
-          alt='sticker'
-          onClick={() => this.onSendMessage("lego2", 2)}
-        />
-        <img
-          className='imgSticker'
-          src={images.lego3}
-          alt='sticker'
-          onClick={() => this.onSendMessage("lego3", 2)}
-        />
-        <img
-          className='imgSticker'
-          src={images.lego4}
-          alt='sticker'
-          onClick={() => this.onSendMessage("lego4", 2)}
-        />
-        <img
-          className='imgSticker'
-          src={images.lego5}
-          alt='sticker'
-          onClick={() => this.onSendMessage("lego5", 2)}
-        />
-        <img
-          className='imgSticker'
-          src={images.lego6}
-          alt='sticker'
-          onClick={() => this.onSendMessage("lego6", 2)}
-        />
-
-        <img
-          className='imgSticker'
           src={images.mimi1}
           alt='sticker'
           onClick={() => this.onSendMessage("mimi1", 2)}
@@ -478,47 +439,24 @@ export default class ChatBox extends React.Component {
           alt='sticker'
           onClick={() => this.onSendMessage("mimi5", 2)}
         />
+        
         <img
           className='imgSticker'
-          src={images.mimi6}
+          src={images.rock}
           alt='sticker'
-          onClick={() => this.onSendMessage("mimi6", 2)}
+          onClick={() => this.onSendMessage("rock", 2)}
         />
         <img
           className='imgSticker'
-          src={images.mimi7}
+          src={images.look}
           alt='sticker'
-          onClick={() => this.onSendMessage("mimi7", 2)}
-        />
-        <img
-          className='imgSticker'
-          src={images.mimi8}
-          alt='sticker'
-          onClick={() => this.onSendMessage("mimi8", 2)}
-        />
-        <img
-          className='imgSticker'
-          src={images.mimi9}
-          alt='sticker'
-          onClick={() => this.onSendMessage("mimi9", 2)}
+          onClick={() => this.onSendMessage("look", 2)}
         />
       </div>
     );
   };
   getGifImage = (value) => {
     switch (value) {
-      case "lego1":
-        return images.lego1;
-      case "lego2":
-        return images.lego2;
-      case "lego3":
-        return images.lego3;
-      case "lego4":
-        return images.lego4;
-      case "lego5":
-        return images.lego5;
-      case "lego6":
-        return images.lego6;
       case "mimi1":
         return images.mimi1;
       case "mimi2":
@@ -529,12 +467,10 @@ export default class ChatBox extends React.Component {
         return images.mimi5;
       case "mimi6":
         return images.mimi6;
-      case "mimi7":
-        return images.mimi7;
-      case "mimi8":
-        return images.mimi8;
-      case "mimi9":
-        return images.mimi9;
+      case "look":
+        return images.look;
+      case "rock":
+        return images.rock;
       default:
         return null;
     }

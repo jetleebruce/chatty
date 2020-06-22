@@ -169,7 +169,7 @@ export default class Chat extends React.Component {
               />
 
               <div className='viewWrapContentItem'>
-                <span className='textItem'>{`Name: ${item.name}`}</span>
+                <span className='textItem'>{`${item.name}`}</span>
               </div>
               {classname === "viewWrapItemNotification" ? (
                 <div className='notificationpragraph'>
@@ -198,7 +198,7 @@ export default class Chat extends React.Component {
     this.displayedContacts = displayedContacts;
     this.displaySearchedContacts();
   };
-  
+
   displaySearchedContacts = () => {
     if (this.searchUsers.length > 0) {
       let viewListUser = [];
@@ -254,28 +254,43 @@ export default class Chat extends React.Component {
   };
   render() {
     return (
-      <div className='root'>
-        <div className='body'>
-          <div className='viewListUser'>
-            <div className='profileviewleftside'>
+      <div className='flex flex-col text-center items-center'>
+        <div
+          className='flex flex-row'
+          style={{ padding: `40px 18px`, width: `1380px` }}
+        >
+          <div className='overflow-y-scroll max-h-screen min-h-screen w-3/12 relative'>
+            <div
+              className='flex justify-between w-full p-4 '
+              style={{ backgroundColor: `#ededed` }}
+            >
               <img
-                className='ProfilePicture'
+                className='w-12 h-12 rounded-full object-cover'
                 alt=''
                 src={this.currentUserPhoto}
                 onClick={this.onProfileClick}
               />
-              <button className='Logout' onClick={this.logout}>
-                Logout
+              <button className='flex flex-col mt-1' onClick={this.logout}>
+                <i className='fa fa-sign-out ml-4'></i>
+                <p className='text-xs'>Выход</p>
               </button>
             </div>
-            <div className='rootsearchbar'>
-              <div className='input-container'>
-                <i className='fa fa-search icon'></i>
+            <div
+              className=''
+              style={{
+                height: `49px`,
+                position: `relative`,
+                boxSizing: `border-box`,
+                borderBottom: `1px solid #ededed`,
+              }}
+            >
+              <div className='flex items-center '>
+                <i className='fa fa-search ml-3'></i>
                 <input
-                  className='input-field'
+                  className='w-full m-4'
                   type='text'
                   onChange={this.searchHandler}
-                  placeholder='Search'
+                  placeholder='Поиск или новый чат'
                 />
               </div>
             </div>

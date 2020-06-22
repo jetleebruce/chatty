@@ -15,12 +15,12 @@
 
 }
 
-.body {
+/* .body {
     display: flex;
     flex-direction: row;
 
 
-}
+} */
 
 .viewLoading {
     position: absolute;
