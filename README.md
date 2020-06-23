@@ -1,7 +1,8 @@
 Project ChattyApp (WhatsApp clone)
 
-React, Firebase, Tailwind
+React, Firebase, Tailwind, Netlify
 
+Web version https://chattyappwhatsapp.netlify.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
