@@ -1,6 +1,5 @@
 import React from "react";
 import LoginString from "../Login/LoginStrings";
-import { Link } from "react-router-dom";
 import firebase from "../../Services/firebase";
 
 import Header from "../../Components/Header";

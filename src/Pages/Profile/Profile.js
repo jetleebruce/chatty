@@ -136,14 +136,14 @@ export default class Profile extends React.Component {
         <input
           className='textInput'
           value={this.state.name ? this.state.name : ""}
-          placeholder='Your nickname...'
+          placeholder='Ваше имя...'
           onChange={this.onChangeNickname}
         />
         <span className='textLabel'>About Me</span>
         <input
           className='textInput'
           value={this.state.aboutMe ? this.state.aboutMe : ""}
-          placeholder='Tell about yourself...'
+          placeholder='Расскажи о себе...'
           onChange={this.onChangeAboutMe}
         />
         <div>
